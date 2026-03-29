@@ -2,9 +2,13 @@ package com.murad.order_service.domain.dto;
 
 import java.math.BigDecimal;
 
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 public record OrderRequest(
-    @NotBlank Long userId,
-    @Positive BigDecimal totalAmount
+    @NotNull
+    Long userId,
+    
+    @Positive
+    BigDecimal totalAmount
 ) {}

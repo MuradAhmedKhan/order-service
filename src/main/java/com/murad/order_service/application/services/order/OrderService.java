@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.murad.order_service.application.services.outbox.SaveOutboxEventService;
 import com.murad.order_service.application.usecases.order.OrderUseCase;
+import com.murad.order_service.domain.annotations.TransactionalOptimisticRetry;
 import com.murad.order_service.domain.dto.OrderRequest;
 import com.murad.order_service.domain.dto.OrderResponse;
 import com.murad.order_service.domain.entity.Order;
@@ -27,13 +28,12 @@ public class OrderService implements OrderUseCase {
     private final JsonSerializerExtension jsonSerializerExtension;
 
     @Override
-    @Transactional
+    @TransactionalOptimisticRetry
     public OrderResponse createOrder(OrderRequest request){
         Order order = orderMapper.toEntity(request);
         orderRepository.save(order);
 
         String payload = jsonSerializerExtension.toJson(order);
-
         saveOutboxEventService.saveOutboxEvents(order, payload);
 
         return orderMapper.toDto(order);

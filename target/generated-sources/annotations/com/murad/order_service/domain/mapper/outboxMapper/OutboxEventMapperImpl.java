@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2026-03-24T19:51:53-0400",
+    date = "2026-03-29T13:03:08-0400",
     comments = "version: 1.6.3, compiler: Eclipse JDT (IDE) 3.45.0.v20260224-0835, environment: Java 26 (Oracle Corporation)"
 )
 @Component
@@ -32,11 +32,10 @@ public class OutboxEventMapperImpl implements OutboxEventMapper {
             else {
                 outboxEvent.setCreatedAt( Instant.now() );
             }
-            outboxEvent.setId( order.getId() );
         }
         outboxEvent.setPayload( payload );
         outboxEvent.setAggregateType( "Order" );
-        outboxEvent.setEventStatus( "PROCESSED" );
+        outboxEvent.setEventStatus( "PENDING" );
 
         return outboxEvent;
     }

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2026-03-24T19:51:52-0400",
+    date = "2026-03-29T13:03:08-0400",
     comments = "version: 1.6.3, compiler: Eclipse JDT (IDE) 3.45.0.v20260224-0835, environment: Java 26 (Oracle Corporation)"
 )
 @Component
@@ -25,8 +25,8 @@ public class OrderMapperImpl implements OrderMapper {
 
         Order.OrderBuilder order = Order.builder();
 
-        order.totalAmount( request.totalAmount() );
         order.userId( request.userId() );
+        order.totalAmount( request.totalAmount() );
 
         order.status( "PENDING" );
         order.createdAt( Instant.now() );
