@@ -1,6 +1,6 @@
 spring:
     datasource:
-        url: jdbc:postgresql://localhost:5432/gp_db_qa
+        url: jdbc:postgresql://localhost:5432/order_service
         username: postgres
         password: murad 123
         driver-class-name: org.postgresql.Driver
@@ -59,7 +59,7 @@ spring:
     
     jpa:
       hibernate:
-        ddl-auto: validate
+        ddl-auto: create
       properties:
         hibernate:
           dialect: org.hibernate.dialect.PostgreSQLDialect
