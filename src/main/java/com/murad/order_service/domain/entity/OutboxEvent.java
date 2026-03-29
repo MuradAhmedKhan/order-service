@@ -26,4 +26,7 @@ public class OutboxEvent {
 
     @Column(name = "created_at")
     private Instant createdAt;
+
+    @Version
+    private Long version;
 }

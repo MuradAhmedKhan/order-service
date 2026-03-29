@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 public class OutboxSchedular {
     private final PublishUnprocessedOutboxEventsService outboxProcessorService;
 
-    @Scheduled(fixedDelay = 5000)
+    @Scheduled(fixedDelay = 36000)
     public void run(){
         outboxProcessorService.processOutboxEvents();
     }
